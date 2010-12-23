@@ -63,6 +63,11 @@ BANNER HERE
 	    	<version>2.1.0</version>
 		</dependency>
 
+		<!-- 
+mvn install:install-file -DgroupId=motej -DartifactId=motej-extras -Dversion=0.9 -Dpackaging=jar -Dfile=motej-extras-0.9.jar
+mvn install:install-file -DgroupId=motej -DartifactId=motej-library -Dversion=0.9 -Dpackaging=jar -Dfile=motej-library-0.9.jar		
+		 -->
+
 		<dependency>
 			<groupId>motej</groupId>
 		    <artifactId>motej-library</artifactId>
@@ -79,6 +84,18 @@ BANNER HERE
 
 	<build>
 		<plugins>
+		
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <configuration>
+                     <source>1.5</source>
+                     <target>1.5</target>
+                 </configuration>
+              </plugin>
+		
+		
+		
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -94,7 +111,7 @@ BANNER HERE
 			</plugin>
 		</plugins>
 	</build>
-	
+	<!-- 
 	<repositories>
 		<repository>
 			<id>hci-artifactory-releases</id>
@@ -123,11 +140,5 @@ BANNER HERE
 		</pluginRepository>
 	</pluginRepositories>
 
-	<distributionManagement>
-		<repository>
-			<id>squidy-libs-releases</id>
-			<name>Squidy Interaction Library Maven Repository Releases</name>
-			<url>http://merkur61.inf.uni-konstanz.de:8080/artifactory/ipaper-libs-releases-local</url>
-		</repository>
-	</distributionManagement>
+	 -->
 </project>
