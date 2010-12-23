@@ -50,13 +50,13 @@ public class ARDrone implements Runnable {
     
     /*Setters*/
 	/**
-	 * Set boolean to allow the drone to take off
+	 * Sets boolean to allow the drone to take off
 	 */
     public void setTakeoffAllowed(boolean takeoffAllowed) {
 		this.takeoffAllowed = takeoffAllowed;
 	}
 	/**
-	 * Set boolean to allow roll and pitch movements.
+	 * Sets boolean to allow roll and pitch movements.
 	 * This can be use to set up a security button in order to avoid random movements with accelerometer or analog device
 	 */
     public void setRollPitchAllowed(boolean rollPitchAllowed){
@@ -64,27 +64,27 @@ public class ARDrone implements Runnable {
     }
 
 	/**
-	 * Make the drone going up
+	 * Makes the drone going up
 	 */
 	public void gazUp() {this.gaz=step;}
 	
 	/**
-	 * Make the drone going down
+	 * Makes the drone going down
 	 */
 	public void gazDown() {this.gaz=-step;}
 	
 	/**
-	 * Make the drone turning left
+	 * Makes the drone turning left
 	 */
 	public void left() {	this.yaw=-step;}
 	
 	/**
-	 * Make the drone turning right
+	 * Makes the drone turning right
 	 */
 	public void right() {this.yaw=step;}
 	
 	/**
-	 * Make the drone going ahead or back.
+	 * Makes the drone going ahead or back.
 	 * @param pitch A float between -1 and 1
 	 */
 	void setPitch(float pitch){
@@ -92,7 +92,7 @@ public class ARDrone implements Runnable {
 			this.pitch = pitch;
 	}
 	/**
-	 * Make the drone going right or left
+	 * Makes the drone going right or left
 	 * @param roll A float between -1 and 1
 	 */
 	public void setRoll(float roll){
@@ -100,7 +100,7 @@ public class ARDrone implements Runnable {
 			this.roll = roll;
 	}
 	/**
-	 * Stop up/down and turn left/right movements
+	 * Stops up/down and turn left/right movements
 	 */
 	public void stopMovment(){
 		this.gaz=0;
@@ -108,7 +108,7 @@ public class ARDrone implements Runnable {
 	}
     
 	/**
-	 * Ask the drone to send video from video port (5555)
+	 * Asks the drone to send video from video port (5555)
 	 */
 	public void initVideo(){
 		try {
@@ -119,7 +119,7 @@ public class ARDrone implements Runnable {
 	}
 	
 	/**
-	 * Make the drone taking off    
+	 * Makes the drone taking off    
 	 */
     public void takeoff(){
     	try {
@@ -135,7 +135,7 @@ public class ARDrone implements Runnable {
     }
     
     /**
-     * Make the drone landing
+     * Makes the drone landing
      */
     public void land(){
     	try {
@@ -200,4 +200,17 @@ public class ARDrone implements Runnable {
 		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, inet_addr, 5555);
 		socket.send(packet);
     }
+
+    /**
+     * Sends an emergency packet. 
+     * If the drone is already on emergency, it will turn it on the normal mode.
+     * If not, it will stop the engines.
+     */
+	public void emergency() {
+		try {
+			send_at_cmd("AT*REF=" + (seq++) + ",290717952");
+		} catch (Exception e) {
+			System.err.println("Can't send emergency command, and that's not cool at all");
+		}		
+	}
 }
