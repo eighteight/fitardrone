@@ -15,6 +15,7 @@ public class WiimoteListener implements CoreButtonListener {
 	private Boolean leftBtn = false;
 	private Boolean rightBtn = false;
 	private Boolean noBtn = true;
+	private Boolean homeBtn = false;
 	
 	private ARDrone drone;
 	private Thread threadDrone;
@@ -35,11 +36,13 @@ public class WiimoteListener implements CoreButtonListener {
 		downBtn = evt.isDPadDownPressed();
 		leftBtn = evt.isDPadLeftPressed();
 		rightBtn = evt.isDPadRightPressed();
+		homeBtn = evt.isButtonHomePressed();
 		if(evt.isNoButtonPressed()){
 			drone.stopMovment();
 		}
 		if(!aBtn){
 			if(noBtn){
+				if(homeBtn){drone.emergency();}
 				if(oneBtn){drone.takeoff();}else if(twoBtn){drone.land();}
 				if(upBtn){drone.gazUp();
 				}else if(downBtn){drone.gazDown();
