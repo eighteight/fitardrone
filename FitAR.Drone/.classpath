@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="bluecove-2.1.0.jar"/>
-	<classpathentry kind="lib" path="bluecove-gpl-2.1.0.jar"/>
-	<classpathentry kind="lib" path="JPachube.jar"/>
-	<classpathentry kind="lib" path="motej-extras-0.9.jar"/>
-	<classpathentry kind="lib" path="motej-library-0.9.jar"/>
-	<classpathentry kind="lib" path="slf4j-api-1.5.11.jar"/>
-	<classpathentry kind="lib" path="slf4j-nop-1.5.6.jar"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -9,9 +9,10 @@ BANNER HERE
 
 	<modelVersion>4.0.0</modelVersion>
 	
-  <groupId>org.fitardone</groupId>
-  <artifactId>org.fitardone</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+	<groupId>org.fitardone</groupId>
+	<artifactId>org.fitardone</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+
 	<name>FITARDrone Controller</name>
 
 	<packaging>bundle</packaging>
@@ -69,6 +70,7 @@ BANNER HERE
 					<instructions>
 						<Private-Package>org.fitardrone.*</Private-Package>
 						<Bundle-Activator>org.fitardrone.bundle.Activator</Bundle-Activator>
+						<Main-Class>ARDrone</Main-Class>
 					</instructions>
 				</configuration>
 			</plugin>
