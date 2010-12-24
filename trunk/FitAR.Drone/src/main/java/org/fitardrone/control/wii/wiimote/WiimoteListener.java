@@ -1,6 +1,9 @@
+package org.fitardrone.control.wii.wiimote;
 /**
  * @author Hugo Cordier
  */
+
+import org.fitardrone.main.ARDrone;
 
 import motej.event.CoreButtonEvent;
 import motej.event.CoreButtonListener;

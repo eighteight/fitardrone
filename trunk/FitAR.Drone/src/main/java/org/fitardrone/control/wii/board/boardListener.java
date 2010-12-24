@@ -1,6 +1,9 @@
+package org.fitardrone.control.wii.board;
 /**
  * @author Hugo Cordier
  */
+
+import org.fitardrone.main.ARDrone;
 
 import motejx.extensions.balanceboard.BalanceBoardEvent;
 import motejx.extensions.balanceboard.BalanceBoardListener;
@@ -23,7 +26,6 @@ public class boardListener implements BalanceBoardListener{
 		this.youShouldAjustIt = youShouldAjustIt;
 	}
 	
-	@Override
 	public void balanceBoardChanged(BalanceBoardEvent evt) {
 		if(youShouldAjustIt){
 			this.adjust(evt);

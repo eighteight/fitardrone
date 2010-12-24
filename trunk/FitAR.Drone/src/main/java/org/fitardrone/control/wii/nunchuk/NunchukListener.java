@@ -1,8 +1,11 @@
+package org.fitardrone.control.wii.nunchuk;
 /**
  * @author Hugo Cordier
  */
 
 import java.awt.Point;
+
+import org.fitardrone.main.ARDrone;
 
 import motejx.extensions.nunchuk.AnalogStickEvent;
 import motejx.extensions.nunchuk.AnalogStickListener;
