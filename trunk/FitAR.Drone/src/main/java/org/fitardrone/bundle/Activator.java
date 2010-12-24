@@ -13,19 +13,21 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator implements BundleActivator {
 
-	/* (non-Javadoc)
+	private WiimoteManager wiimoteManager;
+
+	/**
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
-		new WiimoteManager();
+		wiimoteManager=new WiimoteManager();
+		wiimoteManager.start();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		// TODO Auto-generated method stub
-
+		wiimoteManager.stop();
 	}
 
 }

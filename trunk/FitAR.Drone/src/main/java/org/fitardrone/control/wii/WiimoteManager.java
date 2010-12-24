@@ -33,6 +33,9 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 	 * Set up connection with the wiimote and the nunchuk.
 	 */
 	public WiimoteManager(){
+	}
+	
+	public void start()throws Exception {
 		/*Searching for a wiimote*/
 		System.out.println("Searching for a wiimote..." +
 				"\nPress 1 and 2 simultaneously." +
@@ -52,15 +55,19 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 			this.drone = new ARDrone();
 			System.out.println("Let's fly !!");
 			this.wiimote.addCoreButtonListener(new WiimoteListener(this.drone));
-			Thread threadDrone = new Thread(drone);
-			threadDrone.start();
+			this.drone.start();
 			System.out.println("Please connect a nunchuk to your wiimote")	;
 		} catch (Exception e) {
 			System.err.println(e);
 			System.err.println("Can't initiate drone");
 		}
 	}
+
 	
+	public void stop() throws Exception{
+		// TODO remove listeners and others
+		this.drone.stop();
+	}
 	/**
 	 * Function called when a mote has been found.
 	 * @param mote The wiimote which have just be found
