@@ -29,14 +29,10 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 	private Object lock = new Object();
 	private ARDrone drone;
 	
-	public static void main(String[] args) throws Exception {
-		new WiimoteManager();
-	}
-	
 	/**
 	 * Set up connection with the wiimote and the nunchuk.
 	 */
-	private WiimoteManager(){
+	public WiimoteManager(){
 		/*Searching for a wiimote*/
 		System.out.println("Searching for a wiimote..." +
 				"\nPress 1 and 2 simultaneously." +
