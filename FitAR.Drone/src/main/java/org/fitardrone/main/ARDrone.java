@@ -1,10 +1,13 @@
+package org.fitardrone.main;
 
 /**
  * @author Hugo Cordier
  */
 
 
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class ARDrone implements Runnable {
    
@@ -87,7 +90,7 @@ public class ARDrone implements Runnable {
 	 * Makes the drone going ahead or back.
 	 * @param pitch A float between -1 and 1
 	 */
-	void setPitch(float pitch){
+	public void setPitch(float pitch){
 		if(rollPitchAllowed && pitch>-1 && pitch<1)
 			this.pitch = pitch;
 	}
@@ -191,7 +194,7 @@ public class ARDrone implements Runnable {
     }
     
     /**
-     * Send a command to vidéo port 
+     * Send a command to video port 
      * @param at_cmd
      * @throws Exception
      */

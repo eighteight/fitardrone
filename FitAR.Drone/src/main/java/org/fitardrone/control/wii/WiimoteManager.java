@@ -1,8 +1,15 @@
+package org.fitardrone.control.wii;
 
 /**
  * @author Hugo Cordier
  */
 
+
+
+import org.fitardrone.control.wii.board.boardListener;
+import org.fitardrone.control.wii.nunchuk.NunchukListener;
+import org.fitardrone.control.wii.wiimote.WiimoteListener;
+import org.fitardrone.main.ARDrone;
 
 import motej.Mote;
 import motej.MoteFinder;
