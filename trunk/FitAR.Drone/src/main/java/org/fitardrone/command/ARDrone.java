@@ -1,4 +1,4 @@
-package org.fitardrone.main;
+package org.fitardrone.command;
 
 /**
  * @author Hugo Cordier
@@ -168,7 +168,7 @@ public class ARDrone implements Runnable {
     /**
      * Send updated information to the drone
      */
-    private void updateDrone() {
+    public void updateDrone() {
     	try {
     		send_at_cmd( "AT*PCMD=" + (seq++) + ",1," 
     			+ Float.floatToIntBits(pitch) + "," 
@@ -187,7 +187,7 @@ public class ARDrone implements Runnable {
      * @param at_cmd the command to send to the drone
      * @throws An exception if packet can't be sent (unable to find a network for exemple)
      */
-    private void send_at_cmd(String at_cmd) throws Exception {
+    public void send_at_cmd(String at_cmd) throws Exception {
 		byte[] buffer = (at_cmd + "\r").getBytes();
 		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, inet_addr, 5556);
 		socket.send(packet);
@@ -198,7 +198,7 @@ public class ARDrone implements Runnable {
      * @param at_cmd
      * @throws Exception
      */
-    private void send_to_video(String at_cmd) throws Exception {
+    public void send_to_video(String at_cmd) throws Exception {
 		byte[] buffer = (at_cmd + "\r").getBytes();
 		DatagramPacket packet = new DatagramPacket(buffer, buffer.length, inet_addr, 5555);
 		socket.send(packet);
