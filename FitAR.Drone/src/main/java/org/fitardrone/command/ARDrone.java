@@ -4,7 +4,6 @@ package org.fitardrone.command;
  * @author Hugo Cordier
  */
 
-
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -24,15 +23,47 @@ public class ARDrone implements Runnable {
 	private boolean rollPitchAllowed = true;
 	private boolean takeoffAllowed = false;	
 
+    private Thread threadDrone;
+    
+
 	/**
 	 * Setting up ARDrone.
 	 * ARDronne class will communicate with the drone
 	 */
     public ARDrone() throws Exception {
 		inet_addr = InetAddress.getByAddress(IP_ADDR);
+    }
+
+    
+	/**
+	 * Setting up ARDrone.
+	 * ARDronne class will communicate with the drone
+	 */
+    public ARDrone(byte[] address) throws Exception {
+		inet_addr = InetAddress.getByAddress(address);
+    }
+    
+    /**
+     * Start the instance
+     * @throws Exception
+     */
+    public void start() throws Exception {
 		socket = new DatagramSocket();
 		socket.setSoTimeout(3000);	
 		setMaxAltitude(ALTTITUDE_MAX);
+		
+		Thread threadDrone = new Thread(this);
+		threadDrone.setName("ARDrone@"+inet_addr);
+		threadDrone.start();		
+    }
+
+    /**
+     * Stop the instance
+     * @throws Exception
+     */
+    public void stop() throws Exception {
+    	emergency();
+    	threadDrone.interrupt();
     }
     
 	/**
@@ -46,7 +77,6 @@ public class ARDrone implements Runnable {
 					seq = 0;
 				updateDrone();
 			} catch (InterruptedException e) {
-			} catch (Exception e) {
 			}
     	}
     }
