@@ -5,7 +5,7 @@ package org.fitardrone.control.wii.nunchuk;
 
 import java.awt.Point;
 
-import org.fitardrone.main.ARDrone;
+import org.fitardrone.command.ARDrone;
 
 import motejx.extensions.nunchuk.AnalogStickEvent;
 import motejx.extensions.nunchuk.AnalogStickListener;
@@ -24,7 +24,6 @@ public class NunchukListener implements AnalogStickListener {
 	 * Method called when stick is moving
 	 * @param evt The movement event
 	 */
-	@Override
 	public void analogStickChanged(AnalogStickEvent evt) {
 		Point p = evt.getPoint();
 		if (this.point==null){

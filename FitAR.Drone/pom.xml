@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+	<!--
 BANNER HERE
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>org.fitardone</groupId>
 	<artifactId>org.fitardone</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
@@ -34,72 +33,80 @@ BANNER HERE
 		</dependency>
 
 		<dependency>
-	      <groupId>org.slf4j</groupId>
-	      <artifactId>slf4j-nop</artifactId>
-	      <version>1.6.1</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-nop</artifactId>
+			<version>1.5.6</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-	 		<groupId>org.slf4j</groupId>
-	 		<artifactId>slf4j-api</artifactId>
-	    	<version>1.6.1</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.5.6</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-	      <groupId>net.sf.bluecove</groupId>
-	      <artifactId>bluecove</artifactId>
-	      <version>2.1.0</version>
+			<groupId>net.sf.bluecove</groupId>
+			<artifactId>bluecove</artifactId>
+			<version>2.1.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-	      <groupId>net.sf.bluecove</groupId>
-	      <artifactId>bluecove-gpl</artifactId>
-	    	<version>2.1.0</version>
+			<groupId>net.sf.bluecove</groupId>
+			<artifactId>bluecove-gpl</artifactId>
+			<version>2.1.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-	      <groupId>net.sf.bluecove</groupId>
-	      <artifactId>bluecove-gpl</artifactId>
-	    	<version>2.1.0</version>
+			<groupId>net.sf.bluecove</groupId>
+			<artifactId>bluecove-gpl</artifactId>
+			<version>2.1.0</version>
+			<scope>provided</scope>
 		</dependency>
 
-		<!-- 
-mvn install:install-file -DgroupId=motej -DartifactId=motej-extras -Dversion=0.9 -Dpackaging=jar -Dfile=motej-extras-0.9.jar
-mvn install:install-file -DgroupId=motej -DartifactId=motej-library -Dversion=0.9 -Dpackaging=jar -Dfile=motej-library-0.9.jar		
-		 -->
+		<!--
+			mvn install:install-file -DgroupId=motej -DartifactId=motej-extras
+			-Dversion=0.9 -Dpackaging=jar -Dfile=motej-extras-0.9.jar mvn
+			install:install-file -DgroupId=motej -DartifactId=motej-library
+			-Dversion=0.9 -Dpackaging=jar -Dfile=motej-library-0.9.jar
+		-->
 
 		<dependency>
 			<groupId>motej</groupId>
-		    <artifactId>motej-library</artifactId>
-		    <version>0.9</version>
+			<artifactId>motej-library</artifactId>
+			<version>0.9</version>
+			<scope>provided</scope>
 		</dependency>
 
-	    <dependency>
-   			<groupId>motej</groupId>
-   			<artifactId>motej-extras</artifactId>
-   			<version>0.9</version>
+		<dependency>
+			<groupId>motej</groupId>
+			<artifactId>motej-extras</artifactId>
+			<version>0.9</version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
 
 	<build>
 		<plugins>
-		
-             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-compiler-plugin</artifactId>
-                 <configuration>
-                     <source>1.5</source>
-                     <target>1.5</target>
-                 </configuration>
-              </plugin>
-		
-		
-		
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+
+
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>1.4.3</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
@@ -111,34 +118,33 @@ mvn install:install-file -DgroupId=motej -DartifactId=motej-library -Dversion=0.
 			</plugin>
 		</plugins>
 	</build>
-	<!-- 
-	<repositories>
-		<repository>
-			<id>hci-artifactory-releases</id>
-			<name>Squidy Interaction Library Maven Repository</name>
-			<url>http://artifactory.squidy-lib.de/repo</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	
-	<pluginRepositories>
-		<pluginRepository>
-			<id>mc-release</id>
-			<name>Google Code Maven Repository</name>
-			<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 
-	 -->
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+
+	<!--
+		<repositories> <repository> <id>hci-artifactory-releases</id>
+		<name>Squidy Interaction Library Maven Repository</name>
+		<url>http://artifactory.squidy-lib.de/repo</url> <releases>
+		<enabled>true</enabled> </releases> <snapshots>
+		<enabled>true</enabled> </snapshots> </repository> </repositories>
+
+		<pluginRepositories> <pluginRepository> <id>mc-release</id>
+		<name>Google Code Maven Repository</name>
+		<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+		<releases> <enabled>true</enabled> </releases> <snapshots>
+		<enabled>false</enabled> </snapshots> </pluginRepository>
+		</pluginRepositories>
+	-->
 </project>

@@ -6,11 +6,6 @@ package org.fitardrone.control.wii;
 
 
 
-import org.fitardrone.control.wii.board.boardListener;
-import org.fitardrone.control.wii.nunchuk.NunchukListener;
-import org.fitardrone.control.wii.wiimote.WiimoteListener;
-import org.fitardrone.main.ARDrone;
-
 import motej.Mote;
 import motej.MoteFinder;
 import motej.MoteFinderListener;
@@ -18,7 +13,12 @@ import motej.event.ExtensionEvent;
 import motej.event.ExtensionListener;
 import motej.request.ReportModeRequest;
 import motejx.extensions.balanceboard.BalanceBoard;
-import motejx.extensions.nunchuk.*;
+import motejx.extensions.nunchuk.Nunchuk;
+
+import org.fitardrone.command.ARDrone;
+import org.fitardrone.control.wii.board.BoardListener;
+import org.fitardrone.control.wii.nunchuk.NunchukListener;
+import org.fitardrone.control.wii.wiimote.WiimoteListener;
 
 public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 
@@ -65,7 +65,6 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 	 * Function called when a mote has been found.
 	 * @param mote The wiimote which have just be found
 	 */
-	@Override
 	public void moteFound(Mote mote) {
 		this.finder.stopDiscovery();
 		this.wiimote = mote;
@@ -81,7 +80,6 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 	 * If this is a nunchuk, user is informed and ardrone is allowed to take off.
 	 * @param evt The connection event
 	 */
-	@Override
 	public void extensionConnected(ExtensionEvent evt) {
 		if (evt.getExtension() instanceof Nunchuk) {
 			System.out.println("Nunchuk found");
@@ -95,7 +93,7 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 			System.out.println("BalanceBoard found");
 			this.wiimote.setPlayerLeds(new boolean[] {true, true, true, true} );
 			this.balanceboard = (BalanceBoard) evt.getExtension();
-			this.balanceboard.addBalanceBoardListener(new boardListener(this.drone));
+			this.balanceboard.addBalanceBoardListener(new BoardListener(this.drone));
 			this.wiimote.setReportMode(ReportModeRequest.DATA_REPORT_0x32);
 			drone.setTakeoffAllowed(true);
 		}
@@ -106,7 +104,6 @@ public class WiimoteManager implements MoteFinderListener,ExtensionListener{
 	 * Ardrone is stopped and will not be allowed to take off until a new nunchuk is connected
 	 * @param evt The disconnection event
 	 */
-	@Override
 	public void extensionDisconnected(ExtensionEvent evt) {
 		if (evt.getExtension() instanceof BalanceBoard) {
 			System.out.println("BalanceBoard disconnected");
